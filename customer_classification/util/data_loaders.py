@@ -15,7 +15,6 @@ class AbstractDataLoader(ABC):
 
         if not os.path.isfile(filename):
             logging.error('File does not exist')
-            # TODO: raise exception
             raise Exception("File does not exist")
         else:
             logging.info('Found file: ' + filename)
@@ -31,7 +30,6 @@ class FileDataLoader(AbstractDataLoader):
     def check_file_exists(self):
         if not os.path.isfile(self.filename):
             logging.error('File does not exist')
-            # TODO: raise exception
             raise Exception("File \"{}\" does not exist".format(self.filename))
         else:
             logging.info('Found file: ' + self.filename)

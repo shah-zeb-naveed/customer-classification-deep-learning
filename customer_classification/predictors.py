@@ -1,6 +1,6 @@
 import logging
 from abc import ABC, abstractmethod
-from util.preprocessors import *
+from customer_classification.util.preprocessors import *
 import pandas as pd, numpy as np 
 import matplotlib.pyplot as plt, seaborn as sns 
 import matplotlib
@@ -84,7 +84,7 @@ class CustomerValuePredictor():
 
         if self.model_name == 'RandomForestClassifier':
             # Read params
-            f = open("./resources/rf_params.json")
+            f = open("./configs/rf_params.json")
             params = json.load(f)
             f.close()
 
@@ -100,7 +100,7 @@ class CustomerValuePredictor():
 
         elif self.model_name == 'SVM':
             # Read params
-            f = open("./resources/svm_params.json")
+            f = open("./configs/svm_params.json")
             params = json.load(f)
             f.close()
 
@@ -112,7 +112,7 @@ class CustomerValuePredictor():
 
         elif self.model_name == 'NN':
             # Read params
-            f = open("./resources/nn_params.json")
+            f = open("./configs/nn_params.json")
             params = json.load(f)
             f.close()
 
@@ -170,7 +170,7 @@ class CustomerValuePredictor():
 
         if self.model_name == 'RandomForestClassifier':
             # Read params
-            f = open("./resources/rf_gridsearch_params.json")
+            f = open("./configs/rf_gridsearch_params.json")
             params = json.load(f)
             f.close()
 
@@ -180,12 +180,12 @@ class CustomerValuePredictor():
             grid_search_cv = GridSearchCV(RandomForestClassifier(random_state=0), params, scoring='f1', verbose=1, cv=5)
             grid_search_cv.fit(X_train, np.array(y_train).ravel())
 
-            with open('./resources/rf_params.json', 'w') as f:
+            with open('./configs/rf_params.json', 'w') as f:
                 json.dump(grid_search_cv.best_params_, f)
 
         elif self.model_name == 'SVM':
             # Read params
-            f = open("./resources/svm_gridsearch_params.json")
+            f = open("./configs/svm_gridsearch_params.json")
             params = json.load(f)
             f.close()
 
@@ -195,13 +195,13 @@ class CustomerValuePredictor():
             grid_search_cv = GridSearchCV(LinearSVC(max_iter=10000, random_state=0), params, scoring='f1', verbose=1, cv=5)
             grid_search_cv.fit(X_train, np.array(y_train).ravel())
 
-            with open('./resources/svm_params.json', 'w') as f:
+            with open('./configs/svm_params.json', 'w') as f:
                 json.dump(grid_search_cv.best_params_, f)
 
         elif self.model_name == 'NN':
 
             # Read params
-            f = open("./resources/nn_gridsearch_params.json")
+            f = open("./configs/nn_gridsearch_params.json")
             params = json.load(f)
             f.close()
             
@@ -213,7 +213,7 @@ class CustomerValuePredictor():
             grid_search_cv = GridSearchCV(nn_classifier, params, scoring = 'f1', verbose=1, cv=5)
             grid_search_cv.fit(X_train, y_train)
             
-            with open('./resources/nn_params.json', 'w') as f:
+            with open('./configs/nn_params.json', 'w') as f:
                 json.dump(grid_search_cv.best_params_, f)
 
     def get_neural_network_architecture(self, input_dim):

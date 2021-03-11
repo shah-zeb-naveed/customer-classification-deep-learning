@@ -4,10 +4,13 @@
 import logging
 import json
 from collections import namedtuple
-import os
-from util.DataLoaders import FileDataLoader
-from util.Predictors import CustomerValuePredictor
-from util.arg_helpers import *
+import os, sys, inspect
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0,parentdir) 
+from customer_classification.util.data_loaders import FileDataLoader
+from customer_classification.predictors import CustomerValuePredictor
+from customer_classification.util.arg_helpers import *
 import argparse
 
 def parse_args():
