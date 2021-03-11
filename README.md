@@ -1,5 +1,3 @@
-The main script is ./modules/interview_test_final.py for which the following options must be specified:
-
 CLI argument/s:
 -n or --model_name: The name of the classifer to be used. Currently, RandomForestClassifier and NN are supported. SVC has not yet been tested/tuned properly.
 
