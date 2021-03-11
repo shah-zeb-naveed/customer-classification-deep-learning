@@ -28,7 +28,6 @@ def load_config():
                                        object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
     return run_configuration
 
-
 if __name__ == '__main__':
 
     args = parse_args()
