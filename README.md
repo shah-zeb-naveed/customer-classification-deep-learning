@@ -10,4 +10,5 @@ To run the program:
 
 Examples:
 python .\modules\train.py -n RandomForestClassifier
+
 python .\modules\train.py -n RandomForestClassifier
