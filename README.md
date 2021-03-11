@@ -9,6 +9,7 @@ To run the program:
 2. From root directory of the project, run the scripts with the commands.
 
 Examples:
+
 python .\modules\train.py -n RandomForestClassifier
 
 python .\modules\train.py -n RandomForestClassifier
